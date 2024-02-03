@@ -1,0 +1,133 @@
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <img src="https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/033/original/SST_Logo.png?1706888781" alt="">
+        </div>
+    </body>
+    </html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    #tweet-form {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    #tweet-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+      border-radius: 10px;
+    }
+
+    #tweet-button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #1633ee;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 99px;
+    }
+
+    #tweet-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #huh-box {
+        justify-content: space-evenly;
+    }
+
+    .tweet-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .tweet-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .tweet-content {
+      flex: 1;
+      height: 30px;
+    }
+
+    .tweet-text {
+      margin: 0;
+    }
+
+    .tweet-date {
+      color: #999;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Post your thoughts here</h1>
+    <form id="tweet-form">
+      <input id="tweet-input" type="text" placeholder="Type your thoughts here..." maxlength="280">
+      <button id="tweet-button" type="submit">Post</button>
+    </form>
+    <ul id="tweet-list"></ul>
+  </div>
+  <script>
+    const tweetForm = document.getElementById("tweet-form");
+    const tweetInput = document.getElementById("tweet-input");
+    const tweetButton = document.getElementById("tweet-button");
+    const tweetList = document.getElementById("tweet-list");
+
+   
+    tweetForm.addEventListener("submit", function(event) {
+    
+      event.preventDefault();
+     
+      const tweetText = tweetInput.value;
+    
+      if (tweetText) {
+     
+        const tweetItem = document.createElement("li");
+        
+        tweetItem.className = "tweet-item";
+       
+        tweetItem.innerHTML = `
+          <img class="tweet-avatar" src="https://i.pravatar.cc/50" alt="Avatar">
+          <div class="tweet-content">
+            <p class="tweet-text">${tweetText}</p>
+            <p class="tweet-date">${new Date().toLocaleString()}</p>
+          </div>
+        `;
+     
+        tweetList.appendChild(tweetItem);
+    
+        tweetInput.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
